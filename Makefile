@@ -6,7 +6,7 @@
 #    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 13:25:25 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 13:38:49 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -35,11 +35,11 @@ FLASH_GREEN = \033[33;32m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo "$(DARK_BLUE)\nFichiers de fillit compilés\n"
+	@echo "$(DARK_BLUE)\nFichiers de "$(NAME)" compilés\n"
 	@echo "$(LIGHT_GREEN)Compilation de la Libft : "
 	@make -C libft/ fclean && make -C libft/
 	@gcc $(FLAGS) -o $(NAME) $(OBJ) -I libft/includes -L libft/ -lft
-	@echo "$(FLASH_GREEN)Programme fillit compilé et prêt à l'usage !\n"
+	@echo "$(FLASH_GREEN)Programme "$(NAME)" compilé et prêt à l'usage !\n"
 
 %.o: %.c fillit.h
 	@gcc $(FLAGS) -I libft/includes -o $@ -c $<
@@ -47,7 +47,7 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)
-	@echo "$(LIGHT_PINK)Suppression des .o de fillit\n"
+	@echo "$(LIGHT_PINK)Suppression des .o de "$(NAME)"\n"
 
 fclean: clean
 	@rm -rf $(NAME)
