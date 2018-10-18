@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 15:53:14 by naplouvi    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 15:58:10 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -38,7 +38,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "$(DARK_BLUE)\nFichiers de "$(NAME)" compilés\n"
 	@echo "$(LIGHT_GREEN)Compilation de la Libft : "
-	@make -C libft/ fclean && make -C libft/
+	@make -C libft/
 	@gcc $(FLAGS) -o $(NAME) $(OBJ) -I libft/includes -L libft/ -lft
 	@echo "$(FLASH_GREEN)Programme "$(NAME)" compilé et prêt à l'usage !\n"
 
@@ -52,6 +52,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@make -C libft/ fclean
 	@echo "$(PINK)Suppression de" $(NAME)"\n"
 
 re: fclean all
