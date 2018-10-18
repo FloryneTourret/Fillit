@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 16:55:54 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 17:04:03 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,5 +20,6 @@
 void	ft_usage(int argc);
 void	ft_open_failed(void);
 void	ft_unvalid_file(void);
+int		ft_check_tetrominos(char **tetro);
 
 #endif

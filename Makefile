@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 16:44:15 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 17:04:27 by naplouvi    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -17,6 +17,7 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC =	fillit.c\
 		ft_error.c\
+		ft_check_tetrominos.c\
 		main.c\
 
 OBJ = $(subst .c,.o,$(SRC))
