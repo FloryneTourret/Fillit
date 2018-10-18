@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "The fillit project"
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"alexisvisco.101Header",
+			"evilcat.norminette-42"
+		]
+	},
+	"settings": {
+		"[c]":{
+			"editor.autoIndent": false,
+			"editor.tabCompletion": "on",
+			"editor.tabSize": 4
+		}
+	}
+}
