@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 17:02:46 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 17:16:14 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,11 +23,11 @@ int	ft_check_tetrominos(char **tetro)
 	{
 		j = 0;
 		if (ft_linelen(tetro[i]) != 4)
-			ft_unvalid_file();
+			ft_error();
 		while (tetro[i][j])
 		{
 			if (tetro[i][j] != '.' || tetro[i][j] != '#')
-				ft_unvalid_file();
+				ft_error();
 			j++;
 		}
 		i++;
