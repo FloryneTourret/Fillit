@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_error.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:19:32 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 16:36:52 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:44:32 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,6 @@ void	ft_usage(int argc)
 
 void	ft_open_failed(void)
 {
-	ft_putstr_fd("Error : Can't open file\n");
+	ft_putstr_fd("Error : Can't open file\n", 1);
 	exit(1);
 }
