@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:01:26 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 15:53:00 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,5 +15,7 @@
 # define FILLIT_H
 
 # include "libft/libft.h"
+
+void	ft_usage(int argc);
 
 #endif
