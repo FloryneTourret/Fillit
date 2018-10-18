@@ -6,7 +6,7 @@
 #    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 15:58:10 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/18 16:44:15 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -16,7 +16,7 @@ NAME = fillit
 FLAGS = -Wall -Wextra -Werror
 
 SRC =	fillit.c\
-		ft_usage.c\
+		ft_error.c\
 		main.c\
 
 OBJ = $(subst .c,.o,$(SRC))

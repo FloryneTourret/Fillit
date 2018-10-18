@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 15:52:11 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/18 16:37:18 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,11 @@
 
 int		main(int argc, char **argv)
 {
+	int	fd;
+
 	ft_usage(argc);
-	ft_putstr_fd((const char*)argv[1], 1);
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
+		ft_open_failed();
+
 	return (0);
 }
