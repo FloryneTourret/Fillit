@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 17:04:27 by naplouvi    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/05 12:39:33 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -49,6 +49,7 @@ $(NAME): $(OBJ)
 
 clean:
 	@rm -rf $(OBJ)
+	@make -C libft/ clean
 	@echo "$(LIGHT_PINK)Suppression des .o de "$(NAME)"\n"
 
 fclean: clean
