@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/05 13:35:47 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/05 13:57:49 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 	ft_usage(argc);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
-	while (ret = read(fd, buf, 21))
+	while ((ret = read(fd, buf, 21)))
 	{
 		buf[ret] = '\0';
 		check_tetro(buf) == 0 ? stock_tetro(buf) : ft_error();
@@ -32,3 +32,7 @@ int		main(int argc, char **argv)
 	return (0);
 }
 
+void	stock_tetro(char *str)
+{
+	str = NULL;
+}
