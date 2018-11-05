@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 17:16:24 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/05 13:06:05 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,14 @@
 
 # include "libft/libft.h"
 # include <fcntl.h>
+
+typedef struct		s_tetro
+{
+	char			*content;
+	int				id;
+	t_tetro			*previous;
+	t_tetro			*next;
+}					t_tetro;
 
 void	ft_usage(int argc);
 void	ft_error(void);

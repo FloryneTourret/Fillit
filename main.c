@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 19:17:53 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/05 13:35:47 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,20 +16,19 @@
 int		main(int argc, char **argv)
 {
 	int		fd;
-	int		code;
-	char	*map[26];
-	int		i;
-	int		j;
+	char	buf[21 + 1];
+	int		ret;
 
-	i = 0;
 	ft_usage(argc);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
-	while ((code = get_next_line(fd, &map[i][j++])))
+	while (ret = read(fd, buf, 21))
 	{
-		if (code == -1)
-			ft_error();
-		if (ft_linelen(map[i][j])
+		buf[ret] = '\0';
+		check_tetro(buf) == 0 ? stock_tetro(buf) : ft_error();
 	}
+	if (close(fd) == -1)
+		ft_error();
 	return (0);
 }
+
