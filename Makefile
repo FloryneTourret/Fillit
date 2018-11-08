@@ -6,7 +6,7 @@
 #    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/05 12:39:33 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/08 16:42:46 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,8 +15,7 @@ NAME = fillit
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC =	fillit.c\
-		ft_error.c\
+SRC =	ft_error.c\
 		ft_check_tetrominos.c\
 		main.c\
 

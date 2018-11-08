@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/05 13:57:49 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/08 18:32:57 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,8 @@ int		main(int argc, char **argv)
 	while ((ret = read(fd, buf, 21)))
 	{
 		buf[ret] = '\0';
+		ft_putstr(buf);
+		ft_putchar('\n');
 		check_tetro(buf) == 0 ? stock_tetro(buf) : ft_error();
 	}
 	if (close(fd) == -1)
@@ -35,4 +37,5 @@ int		main(int argc, char **argv)
 void	stock_tetro(char *str)
 {
 	str = NULL;
+	ft_putstr("le tetros est valide !\n");
 }

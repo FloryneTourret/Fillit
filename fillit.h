@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/05 13:57:25 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/08 19:49:36 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,5 +31,6 @@ int					ft_check_tetrominos(char **tetro);
 int					check_tetro(char *buf);
 int					ft_countchar(char *str, char c);
 void				stock_tetro(char *str);
+int					tetro_is_valid(char *buf, int i, int tetro);
 
 #endif
