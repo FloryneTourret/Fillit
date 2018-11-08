@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 18:32:57 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/08 21:21:30 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,16 +18,19 @@ int		main(int argc, char **argv)
 	int		fd;
 	char	buf[21 + 1];
 	int		ret;
-
+	int		id;
+	
+	id = 0;
 	ft_usage(argc);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
 	while ((ret = read(fd, buf, 21)))
 	{
+		id++;
 		buf[ret] = '\0';
 		ft_putstr(buf);
 		ft_putchar('\n');
-		check_tetro(buf) == 0 ? stock_tetro(buf) : ft_error();
+		check_tetro(buf, id) == 0 ? stock_tetro(buf) : ft_error();
 	}
 	if (close(fd) == -1)
 		ft_error();

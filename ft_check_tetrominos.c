@@ -6,16 +6,15 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 21:13:15 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/08 21:21:04 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int	check_tetro(char *buf)
+int	check_tetro(char *buf, int id)
 {
-	static int	id;
 	int			count_full;
 	int			count_empty;
 	int			i;
@@ -23,7 +22,6 @@ int	check_tetro(char *buf)
 	i = 0;
 	count_full = ft_countchar(buf, '#');
 	count_empty = ft_countchar(buf, '.');
-	id = 1;
 	if ((buf[20] == '\n' || buf[20] == '\0') && id < 26)
 	{
 		if (buf[4] != '\n' || buf[9] != '\n' ||
