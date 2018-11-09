@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 15:49:32 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 17:42:45 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@ int		main(int argc, char **argv)
 	char	buf[21 + 1];
 	int		ret;
 	int		id;
-	char	*tetros[26];
+	char	*tetros[26 + 1];
 
 	id = 0;
 	ft_usage(argc);
@@ -29,26 +29,14 @@ int		main(int argc, char **argv)
 	{
 		buf[ret] = '\0';
 		if (check_tetro(buf, id) == 0)
-			tetros[id] = ft_strsub(buf, 0, 21);
+			tetros[id] = ft_strsub(buf, 0, 20);
 		else
 			ft_error();
 		id++;
 	}
-	resolve_tetro(tetros, id);
+	tetros[id] = NULL;
+	ft_putstr(resolve_tetro(tetros, id - 1));
 	if (close(fd) == -1)
 		ft_error();
 	return (0);
-}
-
-void	resolve_tetro(char **tetros, int id)
-{
-	int	i;
-
-	i = 0;
-	while (i < id)
-	{
-		ft_putstr(tetros[i]);
-		ft_putchar('\n');
-		i++;
-	}
 }
