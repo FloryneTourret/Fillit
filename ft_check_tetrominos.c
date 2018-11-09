@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_check_tetrominos.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: nzenzela <nzenzela@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 21:21:04 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 08:56:05 by nzenzela    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ int	check_tetro(char *buf, int id)
 	i = 0;
 	count_full = ft_countchar(buf, '#');
 	count_empty = ft_countchar(buf, '.');
-	if ((buf[20] == '\n' || buf[20] == '\0') && id < 26)
+	if ((buf[20] == '\n' || buf[20] == '\0') && id <= 26)
 	{
 		if (buf[4] != '\n' || buf[9] != '\n' ||
 			buf[14] != '\n' || buf[19] != '\n')
@@ -56,16 +56,11 @@ int	tetro_is_valid(char *buf, int i, int tetro)
 
 int	ft_countchar(char *str, char c)
 {
-	int i;
 	int occurence;
 
-	i = 0;
 	occurence = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
+	while (*str)
+		if (*str++ == c)
 			occurence++;
-		i++;
-	}
 	return (occurence);
 }
