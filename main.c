@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 19:49:34 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 19:51:10 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,18 +41,4 @@ int		main(int argc, char **argv)
 	if (close(fd) == -1)
 		ft_error();
 	return (0);
-}
-
-void	ft_putsstr(char **str, int nb)
-{
-	int	i;
-
-	i = 0;
-	while (i <= nb)
-	{
-		ft_putstr(str[i]);
-		if (i != nb)
-			ft_putchar('\n');
-		i++;
-	}
 }
