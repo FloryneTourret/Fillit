@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_error.c                                       .::    .:/ .      .::   */
+/*   ft_stock_tetro.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/18 13:19:32 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 15:37:23 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
+/*   Updated: 2018/11/09 15:14:47 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_usage(int argc)
+int	stock_tetro(char *str, char *tetro)
 {
-	if (argc != 2)
-	{
-		ft_putstr_fd("usage: ./fillit target_file\n", 1);
-		exit(1);
-	}
-}
+	int	i;
 
-void	ft_error(void)
-{
-	ft_putstr_fd("error\n", 1);
-	exit(1);
+	if (!(tetro = malloc(sizeof(char) * 21)))
+		return (1);
+	i = 0;
+	while (i < 20)
+	{
+		tetro[i] = str[i];
+		i++;
+	}
+	tetro[i] = '\0';
+	return (0);
 }

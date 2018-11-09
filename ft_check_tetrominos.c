@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_check_tetrominos.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nzenzela <nzenzela@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 08:56:05 by nzenzela    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 15:00:52 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ int	check_tetro(char *buf, int id)
 			return (1);
 		while (buf[i] != '#')
 			i++;
-		if (tetro_is_valid(buf, i, 0) == 4)
+		if (tetro_is_valid(buf, i, 0, id + 65) == 4)
 			return (0);
 		else
 			return (1);
@@ -39,18 +39,18 @@ int	check_tetro(char *buf, int id)
 	return (1);
 }
 
-int	tetro_is_valid(char *buf, int i, int tetro)
+int	tetro_is_valid(char *buf, int i, int tetro, char id)
 {
-	buf[i] = '*';
+	buf[i] = id;
 	tetro++;
 	if (buf[i + 1] == '#')
-		tetro = tetro_is_valid(buf, i + 1, tetro);
+		tetro = tetro_is_valid(buf, i + 1, tetro, id);
 	if (buf[i - 1] == '#')
-		tetro = tetro_is_valid(buf, i - 1, tetro);
+		tetro = tetro_is_valid(buf, i - 1, tetro, id);
 	if (buf[i + 5] == '#')
-		tetro = tetro_is_valid(buf, i + 5, tetro);
+		tetro = tetro_is_valid(buf, i + 5, tetro, id);
 	if (buf[i - 5] == '#')
-		tetro = tetro_is_valid(buf, i - 5, tetro);
+		tetro = tetro_is_valid(buf, i - 5, tetro, id);
 	return (tetro);
 }
 

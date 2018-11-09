@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/08 21:21:38 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 14:56:41 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,10 +27,10 @@ typedef struct		s_tetro
 
 void				ft_usage(int argc);
 void				ft_error(void);
-int					ft_check_tetrominos(char **tetro);
 int					check_tetro(char *buf, int id);
 int					ft_countchar(char *str, char c);
-void				stock_tetro(char *str);
-int					tetro_is_valid(char *buf, int i, int tetro);
+int					stock_tetro(char *str, char *tetro);
+int					tetro_is_valid(char *buf, int i, int tetro, char id);
+void				resolve_tetro(char **tetros, int id);
 
 #endif

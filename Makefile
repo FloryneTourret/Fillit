@@ -3,21 +3,22 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/08 16:42:46 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/09 15:39:34 by naplouvi    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NAME = fillit
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g3
 
 SRC =	ft_error.c\
 		ft_check_tetrominos.c\
 		main.c\
+		ft_stock_tetro.c
 
 OBJ = $(subst .c,.o,$(SRC))
 

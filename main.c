@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: nzenzela <nzenzela@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 08:50:45 by nzenzela    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 15:49:32 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,26 +19,36 @@ int		main(int argc, char **argv)
 	char	buf[21 + 1];
 	int		ret;
 	int		id;
-	
+	char	*tetros[26];
+
 	id = 0;
 	ft_usage(argc);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
 	while ((ret = read(fd, buf, 21)))
 	{
-		id++;
 		buf[ret] = '\0';
-		ft_putstr(buf);
-		ft_putchar('\n');
-		check_tetro(buf, id) == 0 ? stock_tetro(buf) : ft_error();
+		if (check_tetro(buf, id) == 0)
+			tetros[id] = ft_strsub(buf, 0, 21);
+		else
+			ft_error();
+		id++;
 	}
+	resolve_tetro(tetros, id);
 	if (close(fd) == -1)
 		ft_error();
 	return (0);
 }
 
-void	stock_tetro(char *str)
+void	resolve_tetro(char **tetros, int id)
 {
-	str = NULL;
-	ft_putstr("le tetros est valide !\n");
+	int	i;
+
+	i = 0;
+	while (i < id)
+	{
+		ft_putstr(tetros[i]);
+		ft_putchar('\n');
+		i++;
+	}
 }
