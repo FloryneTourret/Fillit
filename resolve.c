@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 17:58:07 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/09 18:39:20 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,23 +16,14 @@
 char	*resolve_tetro(char **tetros, int nbr_tetros)
 {
 	char	*map;
-	int		finish;
-	int		i;
+	int		size;
 
-	i = 0;
-	while (i < nbr_tetros)
+	size = calcul_size();
+	map = map_new(size);
+	while (!solver(map, tetros))
 	{
-		finish = 0;
-
-		if (put_tetro(map, tetros[i]) == 0)
-			i++;
+		free_map(map);
+		map = map_new(size++);
 	}
-	map = tetros[25];
 	return (map);
-}
-
-void	ft_putstr(char str, int i)
-{
-	write(1, &str[i], 1);
-	ft_putstr(str, i + 1);
 }
