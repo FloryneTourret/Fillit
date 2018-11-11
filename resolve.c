@@ -18,22 +18,14 @@ char	**resolve_tetro(char **tetros, int nbr_tetros)
 	char	**map;
 	int		size;
 	int		id;
-	int		solved;
 
-	solved = 1;
 	size = 4;
 	id = 0;
-	map = NULL;
 	map = create_map(map, size);
-	while (solved == 1)
+	while (solver(map, tetros, id, nbr_tetros) == 1)
 	{
-		solved = 0;
-		if (solver(map, tetros, id, nbr_tetros) == 1)
-		{
-			free_map(map);
-			map = create_map(map, size++);
-			solved = 1;
-		}
+		free_map(map);
+		map = create_map(map, size++);
 	}
 	return (map);
 }
