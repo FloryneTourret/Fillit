@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 19:47:19 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 14:19:13 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,12 +21,14 @@
 void				ft_usage(int argc);
 void				ft_error(void);
 int					ft_countchar(char *str, char c);
-void 				ft_putsstr(char **str, int nb);
-int 				check_tetro(char *buf, int id);
+void				ft_putsstr(char **str, int nb);
+int					check_tetro(char *buf, int id);
 int					tetro_is_valid(char *buf, int i, int tetro, char id);
 char				**resolve_tetro(char **tetros, int nbr_tetros);
-char				**create_map(char **map, int size);
+char				**create_map(int size);
 int					solver(char **map, char **tetros, int id, int nbr_tetros);
+int					place_tetri(char *tetros, char **map, int x, int y);
 void				free_map(char **map);
+void				print_map(char **map);
 
 #endif

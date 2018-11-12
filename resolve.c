@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   resolve.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 19:51:20 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 15:26:11 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,65 +21,67 @@ char	**resolve_tetro(char **tetros, int nbr_tetros)
 
 	size = 4;
 	id = 0;
-	map = create_map(map, size);
+	map = create_map(size);
 	while (solver(map, tetros, id, nbr_tetros) == 1)
 	{
 		free_map(map);
-		map = create_map(map, size++);
+		map = create_map(size++);
 	}
 	return (map);
 }
 
-char	**create_map(char **map, int size)
-{
-	int		i;
-
-	i = 0;
-	if ((map = (char **)malloc(sizeof(char) * size + 1)) == NULL)
-		return (NULL);
-	while (i < size)
-	{
-		if ((map[i] = (char *)malloc(sizeof(char) * size + 1)) == NULL)
-			return (NULL);
-		map[i][size] = '\0';
-		i++;
-	}
-	map[size] = NULL;
-	return (map);
-}
+/*
+/** Solveur récursif, essaye de placer un tetro a une position de la map, si pas possible essaye avec le tetro suivant
+*/
 
 int		solver(char **map, char **tetros, int id, int nbr_tetros)
 {
-	//return 1 si ca marche pas
-	//return 0 si ca marche
-	//GROS BACKTRACKING EN RECURSIF
-	map = NULL;
-	ft_putsstr(tetros, nbr_tetros);
-	id = 0;
-	nbr_tetros = 0;
+	int	x;
+	int	y;
+
+	y = 0;
+	if (tetros[id] == NULL)
+		return (1);
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (place_tetri(tetros[id], map, x, y) == 0)
+			{
+				if (solver(map, tetros, id + 1, nbr_tetros) == 1)
+					return (1);
+			}
+			x++;
+		}
+		y++;
+	}
 	return (0);
 }
 
-void	free_map(char **map)
+int		place_tetri(char *tetros, char **map, int x, int y)
 {
 	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
-	while (map[i++])
-		free(map[i]);
-	free(map);
-}
-
-void	ft_putsstr(char **str, int nb)
-{
-	int i;
-
-	i = 0;
-	while (i <= nb)
+	j = 0;
+	while (tetros[i])
 	{
-		ft_putstr(str[i]);
-		if (i != nb)
-			ft_putchar('\n');
-		i++;
+		k = 0;
+		while (tetros[i] != '\n')
+		{
+			if (tetros[i] != '.')
+			{
+				if (map[y + j][x + k] == '.')
+					map[y + j][x + k++] = tetros[i];
+				else
+					return (1);
+			}
+			i++;
+		}
+		j++;
 	}
+	return (0);
 }

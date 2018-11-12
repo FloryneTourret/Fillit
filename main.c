@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/09 19:51:10 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 15:04:30 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,10 +35,9 @@ int		main(int argc, char **argv)
 		id++;
 	}
 	tetros[id] = NULL;
-	// ft_putsstr(resolve_tetro(tetros, id - 1), id);
-	resolve_tetro(tetros, id - 1);
-	// PENSER A GERER L'AFFICHAGE DE LA MAP RESOLUE
+	print_map(resolve_tetro(tetros, id - 1));
 	if (close(fd) == -1)
 		ft_error();
+	ft_putchar('a');
 	return (0);
 }
