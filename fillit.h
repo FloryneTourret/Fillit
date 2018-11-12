@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 14:19:13 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 17:18:21 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,8 +27,7 @@ int					tetro_is_valid(char *buf, int i, int tetro, char id);
 char				**resolve_tetro(char **tetros, int nbr_tetros);
 char				**create_map(int size);
 int					solver(char **map, char **tetros, int id, int nbr_tetros);
-int					place_tetri(char *tetros, char **map, int x, int y);
-void				free_map(char **map);
-void				print_map(char **map);
+int					place_tetro(char *tetros, char **map, int x, int y);
+void				free_content(char **content);
 
 #endif

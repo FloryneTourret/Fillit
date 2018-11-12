@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/12 14:08:04 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 14:16:30 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/12 17:35:38 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,15 +16,22 @@
 char	**create_map(int size)
 {
 	int		i;
+	int		j;
 	char	**map;
 
 	i = 0;
-	if ((map = (char **)malloc(sizeof(char) * size + 1)) == NULL)
+	if ((map = (char **)malloc(sizeof(char*) * size + 1)) == NULL)
 		return (NULL);
 	while (i < size)
 	{
 		if ((map[i] = (char *)malloc(sizeof(char) * size + 1)) == NULL)
 			return (NULL);
+		j = 0;
+		while (j < size)
+		{
+			map[i][j] = '.';
+			j++;
+		}
 		map[i][size] = '\0';
 		i++;
 	}
@@ -32,14 +39,14 @@ char	**create_map(int size)
 	return (map);
 }
 
-void	free_map(char **map)
+void	free_content(char **content)
 {
 	int	i;
 
 	i = 0;
-	while (map[i++])
-		free(map[i]);
-	free(map);
+	while (content[i++])
+		free(content[i]);
+	free(content);
 }
 
 void	ft_putsstr(char **str, int nb)
@@ -54,14 +61,4 @@ void	ft_putsstr(char **str, int nb)
 			ft_putchar('\n');
 		i++;
 	}
-}
-
-void	print_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		ft_putstr(map[i++]);
-	free_map(map);
 }
