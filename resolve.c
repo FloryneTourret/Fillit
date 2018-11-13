@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 16:37:45 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 21:05:52 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,8 +88,8 @@ int		place_tetro(char **map, t_tetro *tetro, int x, int y)
 	size = ft_strlen(map[0]);
 	if ((y + tetro->y1 < size) && (y + tetro->y2 < size)
 	&& (y + tetro->y3 < size) && (y + tetro->y4 < size)
-	&& (x + tetro->x1 < size) && (x + tetro->y2 < size)
-	&& (x + tetro->y3 < size) && (x + tetro->y4 < size))
+	&& (x + tetro->x1 < size) && (x + tetro->x2 < size)
+	&& (x + tetro->x3 < size) && (x + tetro->x4 < size))
 	{
 		if (map[y + tetro->y1][x + tetro->x1] == '.'
 		&& map[y + tetro->y2][x + tetro->x2] == '.'
