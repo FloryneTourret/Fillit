@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/12 14:49:36 by naplouvi    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/13 12:37:32 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -19,7 +19,8 @@ SRC =	error.c\
 		check.c\
 		main.c\
 		resolve.c\
-		map.c
+		map.c\
+		tetros.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
