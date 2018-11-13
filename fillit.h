@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 13:01:13 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 15:33:02 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@
 
 typedef struct		s_tetro
 {
+	char			letter;
 	int				x1;
 	int				y1;
 	int				x2;
@@ -31,18 +32,18 @@ typedef struct		s_tetro
 
 void				ft_usage(int argc);
 void				ft_error(void);
-int					ft_countchar(char *str, char c);
 void				ft_putsstr(char **str, int nb);
+int					ft_countchar(char *str, char c);
 int					check_tetro(char *buf, int id);
 int					tetro_is_valid(char *buf, int i, int tetro, char id);
 char				**resolve_tetro(char **tetros, int nbr_tetros);
-char				**create_map(int size);
 int					resolve(char **map, char **tetros, int size, int nb_tetros);
-t_tetro				*coord(char **tetros, int id, int x, int y);
-int					solver(char **map, char **tetros, int id, int size);
-void				stock_tetro(t_tetro *tetro, int x, int y, int found);
-int					place_tetro(char *tetros, char **map, int x, int y);
+int					is_free(char **map, t_tetro *tetro, int size);
+void 				place_tetro(char **map, t_tetro *tetro, int x, int y);
+char				**create_map(int size);
 void				free_content(char **content);
+t_tetro				*coord(t_tetro *tetro, char **tetros, int id);
+void				stock_tetro(t_tetro *tetro, int x, int y, int found);
 void				sort_int_tab(int *tab, unsigned int size);
 int					min(int val1, int val2, int val3, int val4);
 void				serialize_tetro(t_tetro *tetro);

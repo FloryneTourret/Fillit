@@ -6,23 +6,24 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 12:37:00 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 13:03:46 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 15:33:08 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetro		*coord(char **tetros, int id, int x, int y)
+t_tetro		*coord(t_tetro *tetro, char **tetros, int id)
 {
 	int		i;
 	int		found;
-	t_tetro *tetro;
+	int		x;
+	int		y;
 
+	x = -1;
+	y = 0;
 	i = -1;
 	found = 0;
-	if ((tetro = malloc(sizeof(t_tetro))) == NULL)
-		return (NULL);
 	while (tetros[id][++i])
 	{
 		x++;
@@ -34,6 +35,7 @@ t_tetro		*coord(char **tetros, int id, int x, int y)
 		if (tetros[id][i] == id + 65)
 			stock_tetro(tetro, x, y, found++);
 	}
+	tetro->letter = id + 65;
 	return (tetro);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 13:04:45 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 15:33:56 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,7 @@ char	**resolve_tetro(char **tetros, int nb_tetros)
 		free_content(map);
 		map = create_map(size++);
 	}
+	ft_putsstr(map, size);
 	return (map);
 }
 
@@ -34,13 +35,62 @@ int	resolve(char **map, char **tetros, int size, int nb_tetros)
 	t_tetro	*tetro;
 
 	id = -1;
-	size = 0;
 	while (++id <= nb_tetros)
 	{
-		tetro = coord(tetros, id, -1, 0);
+		if ((tetro = malloc(sizeof(t_tetro))) == NULL)
+			return (1);
+		coord(tetro, tetros, id);
+		serialize_tetro(tetro);
+		if (is_free(map, tetro, size) == 0)
+			ft_putstr("free !\n");
+		else
+			ft_putstr("Pas free\n");
 		// verifier si il y a la place sur la map
 		// si il y a la place placer, sinon decaler
 	}
 	free(tetro);
 	return (0);
+}
+
+int		is_free(char **map, t_tetro *tetro, int size)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == '.' && map[y + tetro->y2][x + tetro->x2] == '.'
+				&& map[y + tetro->y3][x + tetro->x3] == '.'
+				&& map[y + tetro->y4][x + tetro->x4] == '.')
+			{
+				place_tetro(map, tetro, x, y);
+				return (0);
+			}
+			else
+			{
+				//A REVOIR ICI
+				return (1);
+				x++;
+			}
+			if (map[y][x] == '\0')
+			{
+				x = 0;
+				y++;
+			}
+		}
+	}
+	size = 0;
+	return (1);
+}
+
+void	place_tetro(char **map, t_tetro *tetro, int x, int y)
+{
+	map[y + tetro->y1][x + tetro->x1] = tetro->letter;
+	map[y + tetro->y2][x + tetro->x2] = tetro->letter;
+	map[y + tetro->y3][x + tetro->x3] = tetro->letter;
+	map[y + tetro->y4][x + tetro->x4] = tetro->letter;
 }

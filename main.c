@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/12 17:23:46 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 15:33:05 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,13 +19,15 @@ int		main(int argc, char **argv)
 	char	buf[21 + 1];
 	int		id;
 	char	*tetros[26 + 1];
+	int		ret;
 
 	id = 0;
 	ft_usage(argc);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
-	while (read(fd, buf, 21))
+	while ((ret = read(fd, buf, 21)))
 	{
+		buf[ret] = '\0';
 		if (check_tetro(buf, id) == 0)
 		{
 			if (!(tetros[id] = ft_strsub(buf, 0, 20)))
@@ -36,7 +38,8 @@ int		main(int argc, char **argv)
 		id++;
 	}
 	tetros[id] = NULL;
-	ft_putsstr(resolve_tetro(tetros, id - 1), id);
+	// ft_putsstr(resolve_tetro(tetros, id - 1), id);
+	resolve_tetro(tetros, id - 1);
 	if (close(fd) == -1)
 		ft_error();
 	return (0);
