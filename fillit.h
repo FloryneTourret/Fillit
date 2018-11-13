@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 12:36:22 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 13:01:13 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,5 +43,8 @@ int					solver(char **map, char **tetros, int id, int size);
 void				stock_tetro(t_tetro *tetro, int x, int y, int found);
 int					place_tetro(char *tetros, char **map, int x, int y);
 void				free_content(char **content);
+void				sort_int_tab(int *tab, unsigned int size);
+int					min(int val1, int val2, int val3, int val4);
+void				serialize_tetro(t_tetro *tetro);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 12:38:10 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 13:04:45 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,11 +34,13 @@ int	resolve(char **map, char **tetros, int size, int nb_tetros)
 	t_tetro	*tetro;
 
 	id = -1;
-	map = NULL;
 	size = 0;
 	while (++id <= nb_tetros)
+	{
 		tetro = coord(tetros, id, -1, 0);
+		// verifier si il y a la place sur la map
+		// si il y a la place placer, sinon decaler
+	}
 	free(tetro);
 	return (0);
 }
-
