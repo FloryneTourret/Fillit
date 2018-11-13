@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 15:49:04 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 15:57:29 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,7 @@ int					tetro_is_valid(char *buf, int i, int tetro, char id);
 char				**resolve_tetro(char **tetros, int nbr_tetros);
 int					resolve(char **map, char **tetros, int size, int nb_tetros);
 int					is_free(char **map, t_tetro *tetro);
-void				place_tetro(char **map, t_tetro *tetro, int x, int y);
+int					place_tetro(char **map, t_tetro *tetro, int x, int y);
 char				**create_map(int size);
 void				free_content(char **content);
 t_tetro				*coord(t_tetro *tetro, char **tetros, int id);

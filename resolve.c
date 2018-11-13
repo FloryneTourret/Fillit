@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 15:51:40 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/13 15:57:36 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,14 +64,8 @@ int		is_free(char **map, t_tetro *tetro)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y + tetro->y1][x + tetro->x1] == '.'
-				&& map[y + tetro->y2][x + tetro->x2] == '.'
-				&& map[y + tetro->y3][x + tetro->x3] == '.'
-				&& map[y + tetro->y4][x + tetro->x4] == '.')
-			{
-				place_tetro(map, tetro, x, y);
+			if ((place_tetro(map, tetro, x, y) == 0))
 				return (0);
-			}
 			else
 				x++;
 			if (map[y][x] == '\0')
@@ -84,10 +78,18 @@ int		is_free(char **map, t_tetro *tetro)
 	return (1);
 }
 
-void	place_tetro(char **map, t_tetro *tetro, int x, int y)
+int		place_tetro(char **map, t_tetro *tetro, int x, int y)
 {
-	map[y + tetro->y1][x + tetro->x1] = tetro->letter;
-	map[y + tetro->y2][x + tetro->x2] = tetro->letter;
-	map[y + tetro->y3][x + tetro->x3] = tetro->letter;
-	map[y + tetro->y4][x + tetro->x4] = tetro->letter;
+	if (map[y + tetro->y1][x + tetro->x1] == '.'
+	&& map[y + tetro->y2][x + tetro->x2] == '.'
+	&& map[y + tetro->y3][x + tetro->x3] == '.'
+	&& map[y + tetro->y4][x + tetro->x4] == '.')
+	{
+		map[y + tetro->y1][x + tetro->x1] = tetro->letter;
+		map[y + tetro->y2][x + tetro->x2] = tetro->letter;
+		map[y + tetro->y3][x + tetro->x3] = tetro->letter;
+		map[y + tetro->y4][x + tetro->x4] = tetro->letter;
+		return (0);
+	}
+	return (1);
 }
