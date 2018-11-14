@@ -6,82 +6,147 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 21:05:52 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 16:25:36 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**resolve_tetro(char **tetros, int nb_tetros)
+char	**resolve_tetro(char **tetros, t_info *info)
 {
 	char	**map;
-	int		size;
 
-	size = 4;
-	map = create_map(size);
-	while (resolve(map, tetros, size, nb_tetros) == 1)
+	map = create_map(info->size);
+	while (resolve(map, tetros, info) == 1)
 	{
 		ft_putstr("Nouvelle map\n");
 		free_content(map);
-		size++;
-		map = create_map(size);
+		info->size++;
+		map = create_map(info->size);
 	}
-	ft_putsstr(map, size);
+	ft_putsstr(map, info->size);
 	ft_putstr("FINI\n");
 	return (map);
 }
 
-int		resolve(char **map, char **tetros, int size, int nb_tetros)
+int		resolve(char **map, char **tetros, t_info *info)
 {
-	int		id;
 	t_tetro	*tetro;
 
-	id = -1;
-	while (++id <= nb_tetros)
+	while (++info->id <= info->nb_tetros)
 	{
+		ft_putstr("tetro : ");
+		ft_putchar(info->id + 65);
+		ft_putchar('\n');
 		if ((tetro = malloc(sizeof(t_tetro))) == NULL)
 			return (1);
-		coord(tetro, tetros, id);
+		coord(tetro, tetros, info->id);
 		serialize_tetro(tetro);
-		if (is_free(map, tetro, size) == 0)
-		{
-			ft_putstr("Place\n");
-		}
+		if (check_free(map, tetros, tetro, info) == 0)
+			free(tetro);
 		else
+		{
+			info->id = -1;
+			info->x = 0;
+			info->y = 0;
 			return (1);
+		}
 	}
-	free(tetro);
 	return (0);
 }
 
-int		is_free(char **map, t_tetro *tetro, int size)
+int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 {
-	int x;
-	int y;
-
-	y = 0;
-	while (map[y])
+	while (map[info->y])
 	{
-		x = 0;
-		while (map[y][x])
+		while (map[info->y][info->x])
 		{
-			if ((place_tetro(map, tetro, x, y) == 0))
-				return (0);
-			if (y == size - 1 && x == size - 1)
-				return (1);
-			x++;
-			if (map[y][x] == '\0')
+			if ((is_free(map, tetro, info->x, info->y) == 0))
 			{
-				x = 0;
-				y++;
+				ft_putstr("place : ");
+				ft_putchar(info->id + 65);
+				ft_putchar('\n');
+				ft_putsstr(map, info->size);
+				ft_putchar('\n');
+				ft_putchar('\n');
+				return (0);
+			}
+			if (info->y == info->size - 1 && info->x == info->size - 1
+				&& tetro->letter != 'A')
+			{
+				ft_putstr("pas la place : ");
+				ft_putchar(info->id + 65);
+				ft_putchar('\n');
+				ft_putsstr(map, info->size);
+				ft_putchar('\n');
+				ft_putchar('\n');
+				if (backtracking(map, tetros, tetro, info) == 0)
+					return (0);
+				return (1);
+			}
+			if (info->y == info->size - 1 && info->x == info->size - 1
+				&& tetro->letter == 'A')
+			{
+				ft_putstr("pas la place, il faut agrandir : ");
+				ft_putchar(info->id + 65);
+				ft_putchar('\n');
+				ft_putsstr(map, info->size);
+				ft_putchar('\n');
+				ft_putchar('\n');
+				return (1);
+			}
+			info->x++;
+			ft_putstr("a droite\n");
+			if (map[info->y][info->x] == '\0')
+			{
+				ft_putstr("en dessous\n");
+				info->y++;
+				info->x = 0;
 			}
 		}
 	}
 	return (1);
 }
 
-int		place_tetro(char **map, t_tetro *tetro, int x, int y)
+int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
+{
+	t_tetro *before;
+
+	if ((before = malloc(sizeof(t_tetro))) == NULL)
+		return (1);
+	coord(before, tetros, info->id - 1);
+	serialize_tetro(before);
+	remove_tetro(map, tetro, info);
+	ft_putstr("je supprime : ");
+	ft_putchar(info->id + 65 - 1);
+	ft_putchar('\n');
+	ft_putsstr(map, info->size);
+	ft_putchar('\n');
+	ft_putchar('\n');
+	info->found = 0;
+	info->x++;
+	info->id--;
+	if (check_free(map, tetros, before, info) == 0)
+	{
+		if ((resolve(map, tetros, info)) == 1)
+		{
+			ft_putstr("je dois agrandir : ");
+			ft_putchar(info->id + 65);
+			ft_putchar('\n');
+			ft_putsstr(map, info->size);
+			ft_putchar('\n');
+			ft_putchar('\n');
+			info->size++;
+			resolve_tetro(tetros, info);
+		}
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int		is_free(char **map, t_tetro *tetro, int x, int y)
 {
 	int size;
 
@@ -104,4 +169,38 @@ int		place_tetro(char **map, t_tetro *tetro, int x, int y)
 		}
 	}
 	return (1);
+}
+
+void	remove_tetro(char **map, t_tetro *tetro, t_info *info)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == tetro->letter - 1)
+			{
+				if (info->found == 0)
+				{
+					info->y = y;
+					info->x = x;
+				}
+				info->found++;
+				map[y][x] = '.';
+			}
+			x++;
+			if (map[y][x] == '\0')
+				y++;
+			if (x == info->size - 1 && y == info->size - 1)
+			{
+				if (map[y][x] == tetro->letter - 1)
+					map[y][x] = '.';
+				return ;
+			}
+		}
+	}
 }

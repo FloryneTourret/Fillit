@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 16:08:29 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/14 14:15:17 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,16 +30,28 @@ typedef struct		s_tetro
 	int				y4;
 }					t_tetro;
 
+typedef struct		s_info
+{
+	int				x;
+	int				y;
+	int				size;
+	int				id;
+	int				found;
+	int				nb_tetros;
+}					t_info;
+
 void				ft_usage(int argc);
 void				ft_error(void);
 void				ft_putsstr(char **str, int nb);
 int					ft_countchar(char *str, char c);
 int					check_tetro(char *buf, int id);
 int					tetro_is_valid(char *buf, int i, int tetro, char id);
-char				**resolve_tetro(char **tetros, int nbr_tetros);
-int					resolve(char **map, char **tetros, int size, int nb_tetros);
-int					is_free(char **map, t_tetro *tetro, int size);
-int					place_tetro(char **map, t_tetro *tetro, int x, int y);
+char				**resolve_tetro(char **tetros, t_info *info);
+int					resolve(char **map, char **tetros, t_info *info);
+int					check_free(char **map, char **tetros, t_tetro *tetro, t_info *info);
+int					is_free(char **map, t_tetro *tetro, int x, int y);
+void				remove_tetro(char **map, t_tetro *tetro, t_info *info);
+int					backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info);
 char				**create_map(int size);
 void				free_content(char **content);
 t_tetro				*coord(t_tetro *tetro, char **tetros, int id);
