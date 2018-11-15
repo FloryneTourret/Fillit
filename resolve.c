@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   resolve.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 13:59:53 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 19:35:01 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ char	**resolve_tetro(char **tetros, t_info *info)
 		map = create_map(info->size);
 	}
 	ft_putsstr(map, info->size);
-	exit(1);
+	// exit(1);
 	return (map);
 }
 
@@ -105,8 +105,7 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	{
 		if ((resolve(map, tetros, info)) == 1)
 		{
-			info->size++;
-			resolve_tetro(tetros, info);
+			map = create_map(info->size + 1);
 		}
 		else
 			return (0);
