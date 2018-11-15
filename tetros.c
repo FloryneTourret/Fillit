@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   tetros.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 12:37:00 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/13 15:33:08 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 19:52:40 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,31 +63,6 @@ void		stock_tetro(t_tetro *tetro, int x, int y, int found)
 	}
 }
 
-void		sort_int_tab(int *tab, unsigned int size)
-{
-	unsigned int	i;
-	int				tmp;
-	unsigned int	j;
-
-	j = 0;
-	tmp = 0;
-	while (j < size)
-	{
-		i = 0;
-		while (i < size - 1)
-		{
-			if (tab[i] > tab[i + 1])
-			{
-				tmp = tab[i];
-				tab[i] = tab[i + 1];
-				tab[i + 1] = tmp;
-			}
-			i++;
-		}
-		j++;
-	}
-}
-
 int			min(int val1, int val2, int val3, int val4)
 {
 	int		tab[4];
@@ -115,4 +90,27 @@ void		serialize_tetro(t_tetro *tetro)
 	tetro->y3 -= ymin;
 	tetro->x4 -= xmin;
 	tetro->y4 -= ymin;
+}
+
+int	read_tetros(int fd, int id, char **tetros)
+{
+	char		buf[21 + 1];
+	int			ret;
+
+	while ((ret = read(fd, buf, 21)))
+	{
+		buf[ret] = '\0';
+		if (check_tetro(buf, id) == 0)
+		{
+			if (!(tetros[id] = ft_strsub(buf, 0, 21)))
+				ft_error();
+		}
+		else
+			ft_error();
+		id++;
+	}
+	tetros[id] = NULL;
+	if (id == 0 || tetros[id - 1][20] != '\0')
+		ft_error();
+	return (id);
 }
