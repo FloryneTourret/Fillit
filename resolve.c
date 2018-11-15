@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 13:06:42 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 13:59:53 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -63,24 +63,12 @@ int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	{
 		while (map[info->y][info->x])
 		{
-			ft_putstr("\n\nY : ");
-			ft_putnbr(info->y);
-			ft_putstr(" X : ");
-			ft_putnbr(info->x);
-			ft_putchar('\n');
 			if ((is_free(map, tetro, info->x, info->y) == 0))
 			{
-				ft_putstr("JE PLACE\n");
-				ft_putsstr(map, info->size);
-				ft_putchar('\n');
-				ft_putchar('\n');
 				info->x = 0;
 				info->y = 0;
 				return (0);
 			}
-			ft_putstr("JE PEUX PAS PLACER ");
-			ft_putchar(tetro->letter);
-			ft_putchar('\n');
 			if (info->y == info->size - 1 && info->x == info->size - 1
 				&& tetro->letter != 'A')
 			{
@@ -111,10 +99,7 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	coord(before, tetros, info->id - 1);
 	serialize_tetro(before);
 	remove_tetro(map, tetro, info);
-	ft_putstr("JE SUPPRIME\n");
-	ft_putsstr(map, info->size);
 	info->found = 0;
-	info->x++;
 	info->id--;
 	if (check_free(map, tetros, before, info) == 0)
 	{
@@ -134,44 +119,11 @@ int		is_free(char **map, t_tetro *tetro, int x, int y)
 	int size;
 
 	size = ft_strlen(map[0]);
-	ft_putstr("Size :");
-	ft_putnbr(size);
-	ft_putchar('\n');
-
-	ft_putstr("y1 : ");
-	ft_putnbr(tetro->y1);
-	ft_putstr(", y2 : ");
-	ft_putnbr(tetro->y2);
-	ft_putstr(", y3 : ");
-	ft_putnbr(tetro->y3);
-	ft_putstr(", y4 : ");
-	ft_putnbr(tetro->y4);
-
-	ft_putchar('\n');
-
-	ft_putstr("x1 : ");
-	ft_putnbr(tetro->x1);
-	ft_putstr(", x2 : ");
-	ft_putnbr(tetro->x2);
-	ft_putstr(", x3 : ");
-	ft_putnbr(tetro->x3);
-	ft_putstr(", x4 : ");
-	ft_putnbr(tetro->x4);
-
-	ft_putchar('\n');
-
 	if ((y + tetro->y1 < size) && (y + tetro->y2 < size)
 	&& (y + tetro->y3 < size) && (y + tetro->y4 < size)
 	&& (x + tetro->x1 < size) && (x + tetro->x2 < size)
 	&& (x + tetro->x3 < size) && (x + tetro->x4 < size))
 	{
-		ft_putchar(map[y + tetro->y1][x + tetro->x1]);
-		ft_putchar(map[y + tetro->y2][x + tetro->x2]);
-		ft_putchar(map[y + tetro->y3][x + tetro->x3]);
-		ft_putchar(map[y + tetro->y4][x + tetro->x4]);
-
-		ft_putchar('\n');
-
 		if (map[y + tetro->y1][x + tetro->x1] == '.'
 		&& map[y + tetro->y2][x + tetro->x2] == '.'
 		&& map[y + tetro->y3][x + tetro->x3] == '.'
@@ -184,7 +136,6 @@ int		is_free(char **map, t_tetro *tetro, int x, int y)
 			return (0);
 		}
 	}
-	ft_putstr("probleme\n");
 	return (1);
 }
 
@@ -204,8 +155,10 @@ void	remove_tetro(char **map, t_tetro *tetro, t_info *info)
 				if (info->found == 0)
 				{
 					info->y = y;
-					info->x = x;
+					info->x = x + 1;
 				}
+				if (info->x > x)
+					info->x = x + 1;
 				info->found++;
 				map[y][x] = '.';
 			}
