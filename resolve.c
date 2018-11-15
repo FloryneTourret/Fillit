@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 19:35:01 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 20:19:42 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,8 +24,6 @@ char	**resolve_tetro(char **tetros, t_info *info)
 		info->size++;
 		map = create_map(info->size);
 	}
-	ft_putsstr(map, info->size);
-	// exit(1);
 	return (map);
 }
 
@@ -138,7 +136,7 @@ int		is_free(char **map, t_tetro *tetro, int x, int y)
 	return (1);
 }
 
-void	remove_tetro(char **map, t_tetro *tetro, t_info *info)
+int	remove_tetro_sans_segfault(char **map, t_tetro *tetro, t_info *info)
 {
 	int		x;
 	int		y;
@@ -161,15 +159,59 @@ void	remove_tetro(char **map, t_tetro *tetro, t_info *info)
 				info->found++;
 				map[y][x] = '.';
 			}
+			// if (info->found == 4)
+			// 	return (0);
 			x++;
 			if (map[y][x] == '\0')
 				y++;
 			if (x == info->size - 1 && y == info->size - 1)
 			{
-				if (map[y][x] == tetro->letter - 1)
-					map[y][x] = '.';
-				return ;
+				// LE SEGFAULT EST PAR LA
+				// if (map[y][x] == tetro->letter - 1)
+				// 	map[y][x] = '.';
+				return (1);
 			}
 		}
 	}
+	return (0);
+}
+
+int	remove_tetro(char **map, t_tetro *tetro, t_info *info)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] == tetro->letter - 1)
+			{
+				if (info->found == 0)
+				{
+					info->y = y;
+					info->x = x + 1;
+				}
+				if (info->x > x)
+					info->x = x + 1;
+				info->found++;
+				map[y][x] = '.';
+			}
+			// if (info->found == 4)
+			// 	return (0);
+			x++;
+			if (map[y][x] == '\0')
+				y++;
+			if (x == info->size - 1 && y == info->size - 1)
+			{
+				// LE SEGFAULT EST PAR LA
+				if (map[y][x] == tetro->letter - 1)
+					map[y][x] = '.';
+				return (1);
+			}
+		}
+	}
+	return (0);
 }

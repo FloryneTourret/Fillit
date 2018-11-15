@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   check.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 12:10:01 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 19:54:20 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,7 +24,8 @@ int	check_tetro(char *buf, int id)
 	count_empty = ft_countchar(buf, '.');
 	if ((buf[20] == '\n' || buf[20] == '\0') && id <= 26)
 	{
-		if (buf[4] != '\n' || buf[9] != '\n' || buf[14] != '\n' || buf[19] != '\n')
+		if (buf[4] != '\n' || buf[9] != '\n'
+		|| buf[14] != '\n' || buf[19] != '\n')
 			return (1);
 		if (count_full != 4 || count_empty != 12)
 			return (1);

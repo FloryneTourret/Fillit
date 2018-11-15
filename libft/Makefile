@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/18 13:22:14 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/15 19:53:27 by naplouvi    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -82,7 +82,8 @@ SRC = ft_putchar.c\
 	  ft_save_line.c\
 	  ft_strnjoin.c\
 	  ft_linelen.c\
-	  ft_get_first_word.c
+	  ft_get_first_word.c\
+	  sort_int_tab.c
 
 
 

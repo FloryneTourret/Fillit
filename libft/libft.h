@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   libft.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/02 10:47:36 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 13:14:54 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 19:53:19 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -90,5 +90,6 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_swap(int *a, int *b);
 char				*ft_strcapitalize(char *str);
 char				*ft_getfirstword(const char *str);
+void				sort_int_tab(int *tab, unsigned int size);
 
 #endif

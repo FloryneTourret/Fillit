@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 14:15:17 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 20:05:08 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,14 +50,14 @@ char				**resolve_tetro(char **tetros, t_info *info);
 int					resolve(char **map, char **tetros, t_info *info);
 int					check_free(char **map, char **tetros, t_tetro *tetro, t_info *info);
 int					is_free(char **map, t_tetro *tetro, int x, int y);
-void				remove_tetro(char **map, t_tetro *tetro, t_info *info);
+int					remove_tetro(char **map, t_tetro *tetro, t_info *info);
 int					backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info);
 char				**create_map(int size);
 void				free_content(char **content);
 t_tetro				*coord(t_tetro *tetro, char **tetros, int id);
 void				stock_tetro(t_tetro *tetro, int x, int y, int found);
-void				sort_int_tab(int *tab, unsigned int size);
 int					min(int val1, int val2, int val3, int val4);
 void				serialize_tetro(t_tetro *tetro);
+int					read_tetros(int fd, int id, char **tetros);
 
 #endif
