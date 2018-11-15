@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 16:30:52 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 11:54:00 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,6 +31,7 @@ char	**resolve_tetro(char **tetros, t_info *info)
 	ft_putsstr(map, info->size);
 	ft_putstr("FINI\n");
 	/********************************************************************/
+	exit(1);
 	return (map);
 }
 
@@ -38,7 +39,7 @@ int		resolve(char **map, char **tetros, t_info *info)
 {
 	t_tetro	*tetro;
 
-	while (++info->id <= info->nb_tetros)
+	while (++info->id < info->nb_tetros)
 	{
 		/********************************************************************/
 		ft_putstr("tetro : ");
@@ -64,6 +65,11 @@ int		resolve(char **map, char **tetros, t_info *info)
 
 int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 {
+	if (info->x >= info->size)
+	{
+		info->y++;
+		info->x = 0;
+	}
 	while (map[info->y])
 	{
 		while (map[info->y][info->x])
@@ -78,6 +84,8 @@ int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 				ft_putchar('\n');
 				ft_putchar('\n');
 				/********************************************************************/
+				info->x = 0;
+				info->y = 0;
 				return (0);
 			}
 			if (info->y == info->size - 1 && info->x == info->size - 1
@@ -92,24 +100,14 @@ int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 				ft_putchar('\n');
 				/********************************************************************/
 				if (backtracking(map, tetros, tetro, info) == 0)
-				{
-					/********************************************************************/
-					ft_putstr("backtracking\n");
-					/********************************************************************/
 					return (0);
-				}
 				return (1);
 			}
 			if (info->y == info->size - 1 && info->x == info->size - 1
 				&& tetro->letter == 'A')
 			{
 				/********************************************************************/
-				ft_putstr("pas la place, il faut agrandir : ");
-				ft_putchar(info->id + 65);
-				ft_putchar('\n');
-				ft_putsstr(map, info->size);
-				ft_putchar('\n');
-				ft_putchar('\n');
+				ft_putstr("pas la place, il faut agrandir \n");
 				/********************************************************************/
 				return (1);
 			}
@@ -159,7 +157,9 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 		{
 			/********************************************************************/
 			ft_putstr("je dois agrandir : ");
-			ft_putchar(info->id + 65);
+			ft_putnbr(info->id);
+			ft_putchar('\n');
+			ft_putnbr(info->nb_tetros);
 			ft_putchar('\n');
 			ft_putsstr(map, info->size);
 			ft_putchar('\n');

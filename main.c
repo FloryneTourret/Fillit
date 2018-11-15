@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/14 13:49:24 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/15 12:00:38 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,7 +39,6 @@ int		main(int argc, char **argv)
 		id++;
 	}
 	tetros[id] = NULL;
-	// ft_putsstr(resolve_tetro(tetros, id - 1), id);
 	if ((info = malloc(sizeof(t_info))) == NULL)
 		return (1);
 	info->x = 0;
@@ -47,8 +46,9 @@ int		main(int argc, char **argv)
 	info->size = 4;
 	info->id = -1;
 	info->found = 0;
-	info->nb_tetros = id - 1;
+	info->nb_tetros = id;
 	resolve_tetro(tetros, info);
+	// ft_putsstr(resolve_tetro(tetros, id - 1), id);
 	if (close(fd) == -1)
 		ft_error();
 	return (0);
