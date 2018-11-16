@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 16:05:58 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 17:15:32 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -67,12 +67,11 @@ int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 				info->y = 0;
 				return (0);
 			}
-			if (info->y == info->size - 1 && info->x == info->size - 1
-				&& tetro->letter != 'A')
-				return (backtracking(map, tetros, tetro, info));
-			if (info->y == info->size - 1 && info->x == info->size - 1
-				&& tetro->letter == 'A')
-				return (1);
+			if (info->y == info->size - 1 && info->x == info->size - 1)
+			{
+				return (tetro->letter != 'A' ?
+				backtracking(map, tetros, tetro, info) : 1);
+			}
 			info->x++;
 			if (map[info->y][info->x] == '\0')
 			{
