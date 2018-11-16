@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 20:19:42 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 14:29:58 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@ int		resolve(char **map, char **tetros, t_info *info)
 	while (++info->id < info->nb_tetros)
 	{
 		if ((tetro = malloc(sizeof(t_tetro))) == NULL)
-			return (1);
+			ft_error();
 		coord(tetro, tetros, info->id);
 		serialize_tetro(tetro);
 		if (check_free(map, tetros, tetro, info) == 0)
@@ -69,11 +69,7 @@ int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 			}
 			if (info->y == info->size - 1 && info->x == info->size - 1
 				&& tetro->letter != 'A')
-			{
-				if (backtracking(map, tetros, tetro, info) == 0)
-					return (0);
-				return (1);
-			}
+				return (backtracking(map, tetros, tetro, info));
 			if (info->y == info->size - 1 && info->x == info->size - 1
 				&& tetro->letter == 'A')
 				return (1);
@@ -102,9 +98,7 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	if (check_free(map, tetros, before, info) == 0)
 	{
 		if ((resolve(map, tetros, info)) == 1)
-		{
 			map = create_map(info->size + 1);
-		}
 		else
 			return (0);
 	}
@@ -136,59 +130,19 @@ int		is_free(char **map, t_tetro *tetro, int x, int y)
 	return (1);
 }
 
-int	remove_tetro_sans_segfault(char **map, t_tetro *tetro, t_info *info)
-{
-	int		x;
-	int		y;
-
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == tetro->letter - 1)
-			{
-				if (info->found == 0)
-				{
-					info->y = y;
-					info->x = x + 1;
-				}
-				if (info->x > x)
-					info->x = x + 1;
-				info->found++;
-				map[y][x] = '.';
-			}
-			// if (info->found == 4)
-			// 	return (0);
-			x++;
-			if (map[y][x] == '\0')
-				y++;
-			if (x == info->size - 1 && y == info->size - 1)
-			{
-				// LE SEGFAULT EST PAR LA
-				// if (map[y][x] == tetro->letter - 1)
-				// 	map[y][x] = '.';
-				return (1);
-			}
-		}
-	}
-	return (0);
-}
-
 int	remove_tetro(char **map, t_tetro *tetro, t_info *info)
 {
 	int		x;
 	int		y;
 
-	y = 0;
-	while (map[y])
+	y = -1;
+	while (map[++y] && (x = -1))
 	{
-		x = 0;
-		while (map[y][x])
+		while (map[y][++x])
 		{
 			if (map[y][x] == tetro->letter - 1)
 			{
+				map[y][x] = '.';
 				if (info->found == 0)
 				{
 					info->y = y;
@@ -197,21 +151,8 @@ int	remove_tetro(char **map, t_tetro *tetro, t_info *info)
 				if (info->x > x)
 					info->x = x + 1;
 				info->found++;
-				map[y][x] = '.';
-			}
-			// if (info->found == 4)
-			// 	return (0);
-			x++;
-			if (map[y][x] == '\0')
-				y++;
-			if (x == info->size - 1 && y == info->size - 1)
-			{
-				// LE SEGFAULT EST PAR LA
-				if (map[y][x] == tetro->letter - 1)
-					map[y][x] = '.';
-				return (1);
 			}
 		}
 	}
-	return (0);
+	return (info->found == 4);
 }
