@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/16 14:29:58 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/16 16:05:58 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,12 +96,7 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	info->found = 0;
 	info->id--;
 	if (check_free(map, tetros, before, info) == 0)
-	{
-		if ((resolve(map, tetros, info)) == 1)
-			map = create_map(info->size + 1);
-		else
-			return (0);
-	}
+		return (resolve(map, tetros, info) == 1);
 	return (1);
 }
 
