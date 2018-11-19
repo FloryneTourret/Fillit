@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 19:56:04 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 12:34:07 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,8 @@ int		main(int argc, char **argv)
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		ft_error();
 	id = read_tetros(fd, id, tetros);
-	if ((info = malloc(sizeof(t_info))) == NULL)
-		return (1);
+	if ((info = malloc(sizeof(t_info))) == NULL || close(fd) == -1)
+		ft_error();
 	info->x = 0;
 	info->y = 0;
 	info->size = 2;
@@ -34,7 +34,5 @@ int		main(int argc, char **argv)
 	info->found = 0;
 	info->nb_tetros = id;
 	ft_putsstr(resolve_tetro(tetros, info), info->size);
-	if (close(fd) == -1)
-		ft_error();
 	return (0);
 }

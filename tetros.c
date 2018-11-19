@@ -6,7 +6,7 @@
 /*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 12:37:00 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 19:52:40 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 12:51:10 by naplouvi    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,17 +46,17 @@ void		stock_tetro(t_tetro *tetro, int x, int y, int found)
 		tetro->x1 = x;
 		tetro->y1 = y;
 	}
-	if (found == 1)
+	else if (found == 1)
 	{
 		tetro->x2 = x;
 		tetro->y2 = y;
 	}
-	if (found == 2)
+	else if (found == 2)
 	{
 		tetro->x3 = x;
 		tetro->y3 = y;
 	}
-	if (found == 3)
+	else if (found == 3)
 	{
 		tetro->x4 = x;
 		tetro->y4 = y;
@@ -92,7 +92,7 @@ void		serialize_tetro(t_tetro *tetro)
 	tetro->y4 -= ymin;
 }
 
-int	read_tetros(int fd, int id, char **tetros)
+int			read_tetros(int fd, int id, char **tetros)
 {
 	char		buf[21 + 1];
 	int			ret;
