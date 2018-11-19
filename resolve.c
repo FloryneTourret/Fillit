@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 18:34:36 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 19:23:05 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ char	**resolve_tetro(char **tetros, t_info *info, char **map)
 	{
 		free_content(map);
 		info->size++;
-		if ((map = (char **)malloc(sizeof(char *) * info->size + 1)) == NULL)
+		if ((map = (char **)malloc(sizeof(char *) * (info->size + 1))) == NULL)
 			return (NULL);
 		create_map(info->size, map);
 	}

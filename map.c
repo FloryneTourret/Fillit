@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/12 14:08:04 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 18:40:07 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 19:17:47 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,7 +21,7 @@ char	**create_map(int size, char **map)
 	i = 0;
 	while (i < size)
 	{
-		if ((map[i] = (char *)malloc(sizeof(char) * size + 1)) == NULL)
+		if ((map[i] = (char *)malloc(sizeof(char) * (size + 1))) == NULL)
 			return (NULL);
 		j = 0;
 		while (j < size)
@@ -41,7 +41,7 @@ void	free_content(char **content)
 	int	i;
 
 	i = 0;
-	while (content[i++] != NULL)
+	while (content[i++])
 		free(content[i]);
 	free(content);
 }
