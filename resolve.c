@@ -6,19 +6,15 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 18:17:17 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:34:36 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**resolve_tetro(char **tetros, t_info *info)
+char	**resolve_tetro(char **tetros, t_info *info, char **map)
 {
-	char	**map;
-
-	if ((map = (char **)malloc(sizeof(char *) * info->size + 1)) == NULL)
-		return (NULL);
 	create_map(info->size, map);
 	while (resolve(map, tetros, info) == 1)
 	{
@@ -48,6 +44,7 @@ int		resolve(char **map, char **tetros, t_info *info)
 			info->id = -1;
 			info->x = 0;
 			info->y = 0;
+			free(tetro);
 			return (1);
 		}
 	}
@@ -99,7 +96,11 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	info->found = 0;
 	info->id--;
 	if (check_free(map, tetros, before, info) == 0)
+	{
+		free(before);
 		return (resolve(map, tetros, info) == 1);
+	}
+	free(before);
 	return (1);
 }
 

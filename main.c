@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   main.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 12:34:07 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:44:26 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,6 +19,7 @@ int		main(int argc, char **argv)
 	int			id;
 	char		*tetros[26 + 1];
 	t_info		*info;
+	char		**map;
 
 	id = 0;
 	ft_usage(argc);
@@ -33,6 +34,11 @@ int		main(int argc, char **argv)
 	info->id = -1;
 	info->found = 0;
 	info->nb_tetros = id;
-	ft_putsstr(resolve_tetro(tetros, info), info->size);
+	if ((map = (char **)malloc(sizeof(char *) * info->size + 1)) == NULL)
+		ft_error();
+	ft_putsstr((map = resolve_tetro(tetros, info, map)), info->size);
+	free_content(map);
+	while (--id >= 0)
+		tetros[id] = NULL;
 	return (0);
 }

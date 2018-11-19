@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/12 14:08:04 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 18:17:08 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:40:07 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ void	free_content(char **content)
 	int	i;
 
 	i = 0;
-	while (content[i++])
+	while (content[i++] != NULL)
 		free(content[i]);
 	free(content);
 }

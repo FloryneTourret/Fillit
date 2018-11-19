@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 12:37:00 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 17:57:03 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:51:39 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -108,13 +108,13 @@ int			read_tetros(int fd, int id, char **tetros)
 		}
 		else
 			ft_error();
+		*buf = '\0';
 		id++;
 	}
 	tetros[id] = NULL;
 	i = -1;
 	while (buf[++i])
 		buf[i] = '\0';
-	ft_putstr(buf);
 	if (id == 0 || tetros[id - 1][20] != '\0')
 		ft_error();
 	return (id);

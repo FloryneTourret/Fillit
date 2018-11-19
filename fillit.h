@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 17:36:15 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:22:23 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,7 +46,7 @@ void				ft_putsstr(char **str, int nb);
 int					ft_countchar(char *str, char c);
 int					check_tetro(char *buf, int id);
 int					tetro_is_valid(char *buf, int i, int tetro, char id);
-char				**resolve_tetro(char **tetros, t_info *info);
+char				**resolve_tetro(char **tetros, t_info *info, char **map);
 int					resolve(char **map, char **tetros, t_info *info);
 int					check_free(char **map, char **tetros, t_tetro *tetro, t_info *info);
 int					is_free(char **map, t_tetro *tetro, int x, int y);
