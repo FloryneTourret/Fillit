@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 16:51:06 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 21:38:38 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 15:23:40 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -43,13 +43,13 @@ int	tetro_is_valid(char *buf, int i, int tetro, char letter)
 {
 	buf[i] = letter;
 	tetro++;
-	if (buf[i + 1] == '#')
+	if ((i + 1 >= 0) && (i + 1 <= (int)ft_strlen(buf)) && buf[i + 1] == '#')
 		tetro = tetro_is_valid(buf, i + 1, tetro, letter);
-	if (buf[i - 1] == '#')
+	if ((i - 1 >= 0) && (i - 1 <= (int)ft_strlen(buf)) && buf[i - 1] == '#')
 		tetro = tetro_is_valid(buf, i - 1, tetro, letter);
-	if (buf[i + 5] == '#')
+	if ((i + 5 >= 0) && (i + 5 <= (int)ft_strlen(buf)) && buf[i + 5] == '#')
 		tetro = tetro_is_valid(buf, i + 5, tetro, letter);
-	if (buf[i - 5] == '#')
+	if ((i - 5 >= 0) && (i - 5 <= (int)ft_strlen(buf)) && buf[i - 5] == '#')
 		tetro = tetro_is_valid(buf, i - 5, tetro, letter);
 	return (tetro);
 }
