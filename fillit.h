@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   fillit.h                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/15 20:05:08 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 17:36:15 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,7 +52,7 @@ int					check_free(char **map, char **tetros, t_tetro *tetro, t_info *info);
 int					is_free(char **map, t_tetro *tetro, int x, int y);
 int					remove_tetro(char **map, t_tetro *tetro, t_info *info);
 int					backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info);
-char				**create_map(int size);
+char				**create_map(int size, char **map);
 void				free_content(char **content);
 t_tetro				*coord(t_tetro *tetro, char **tetros, int id);
 void				stock_tetro(t_tetro *tetro, int x, int y, int found);

@@ -3,25 +3,22 @@
 /*                                                              /             */
 /*   map.c                                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/12 14:08:04 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 12:59:49 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:17:08 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	**create_map(int size)
+char	**create_map(int size, char **map)
 {
 	int		i;
 	int		j;
-	char	**map;
 
 	i = 0;
-	if ((map = (char **)malloc(sizeof(char*) * size + 1)) == NULL)
-		return (NULL);
 	while (i < size)
 	{
 		if ((map[i] = (char *)malloc(sizeof(char) * size + 1)) == NULL)

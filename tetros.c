@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   tetros.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/13 12:37:00 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 12:51:10 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 17:57:03 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,6 +96,7 @@ int			read_tetros(int fd, int id, char **tetros)
 {
 	char		buf[21 + 1];
 	int			ret;
+	int			i;
 
 	while ((ret = read(fd, buf, 21)))
 	{
@@ -110,6 +111,10 @@ int			read_tetros(int fd, int id, char **tetros)
 		id++;
 	}
 	tetros[id] = NULL;
+	i = -1;
+	while (buf[++i])
+		buf[i] = '\0';
+	ft_putstr(buf);
 	if (id == 0 || tetros[id - 1][20] != '\0')
 		ft_error();
 	return (id);

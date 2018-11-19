@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   resolve.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: naplouvi <naplouvi@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 13:01:55 by naplouvi    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/19 18:17:17 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,12 +17,16 @@ char	**resolve_tetro(char **tetros, t_info *info)
 {
 	char	**map;
 
-	map = create_map(info->size);
+	if ((map = (char **)malloc(sizeof(char *) * info->size + 1)) == NULL)
+		return (NULL);
+	create_map(info->size, map);
 	while (resolve(map, tetros, info) == 1)
 	{
 		free_content(map);
 		info->size++;
-		map = create_map(info->size);
+		if ((map = (char **)malloc(sizeof(char *) * info->size + 1)) == NULL)
+			return (NULL);
+		create_map(info->size, map);
 	}
 	return (map);
 }
