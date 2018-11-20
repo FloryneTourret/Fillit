@@ -6,7 +6,7 @@
 #    By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/02 10:51:00 by ftourret     #+#   ##    ##    #+#        #
-#    Updated: 2018/11/20 14:25:02 by ftourret    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/11/20 15:40:34 by ftourret    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -20,7 +20,8 @@ SRC =	error.c\
 		main.c\
 		resolve.c\
 		map.c\
-		tetros.c
+		tetros.c\
+		info.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
