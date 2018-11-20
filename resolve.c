@@ -6,26 +6,12 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 14:23:45 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 15:32:28 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-char	**resolve_tetro(char **tetros, t_info *info, char **map)
-{
-	create_map(info->size, map);
-	while (resolve(map, tetros, info) == 1)
-	{
-		free_content(map);
-		info->size++;
-		if ((map = (char **)malloc(sizeof(char *) * (info->size + 1))) == NULL)
-			return (NULL);
-		create_map(info->size, map);
-	}
-	return (map);
-}
 
 int		resolve(char **map, char **tetros, t_info *info)
 {
@@ -54,10 +40,7 @@ int		resolve(char **map, char **tetros, t_info *info)
 int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 {
 	if (info->x >= info->size)
-	{
-		info->y++;
-		info->x = 0;
-	}
+		increase_line(info);
 	while (map[info->y])
 	{
 		while (map[info->y][info->x])
@@ -75,10 +58,7 @@ int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 			}
 			info->x++;
 			if (map[info->y][info->x] == '\0')
-			{
-				info->y++;
-				info->x = 0;
-			}
+				increase_line(info);
 		}
 	}
 	return (1);

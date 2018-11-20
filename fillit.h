@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 13:09:14 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 15:34:36 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -44,14 +44,18 @@ void				ft_usage(int argc);
 void				ft_error(void);
 void				ft_putsstr(char **str, int nb);
 int					ft_countchar(char *str, char c);
+void				initialize(t_info *info, int id);
 int					check_tetro(char *buf, int id);
 int					tetro_is_valid(char *buf, int i, int tetro, char id);
 char				**resolve_tetro(char **tetros, t_info *info, char **map);
 int					resolve(char **map, char **tetros, t_info *info);
-int					check_free(char **map, char **tetros, t_tetro *tetro, t_info *info);
+int					check_free(char **map, char **tetros, t_tetro *tetro,
+					t_info *info);
+void				increase_line(t_info *info);
 int					is_free(char **map, t_tetro *tetro, int x, int y);
 int					remove_tetro(char **map, t_tetro *tetro, t_info *info);
-int					backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info);
+int					backtracking(char **map, char **tetros, t_tetro *tetro,
+					t_info *info);
 int					find_size(int id);
 char				**create_map(int size, char **map);
 void				free_content(char **content);
