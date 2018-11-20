@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 19:23:05 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 14:23:45 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,7 +88,7 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 {
 	t_tetro *before;
 
-	if ((before = malloc(sizeof(t_tetro))) == NULL)
+	if ((before = (t_tetro*)malloc(sizeof(t_tetro))) == NULL)
 		return (1);
 	coord(before, tetros, info->id - 1);
 	serialize_tetro(before);
@@ -98,7 +98,7 @@ int		backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info)
 	if (check_free(map, tetros, before, info) == 0)
 	{
 		free(before);
-		return (resolve(map, tetros, info) == 1);
+		return (0);
 	}
 	free(before);
 	return (1);
