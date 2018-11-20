@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:00:30 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 18:22:23 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 13:09:14 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,6 +52,7 @@ int					check_free(char **map, char **tetros, t_tetro *tetro, t_info *info);
 int					is_free(char **map, t_tetro *tetro, int x, int y);
 int					remove_tetro(char **map, t_tetro *tetro, t_info *info);
 int					backtracking(char **map, char **tetros, t_tetro *tetro, t_info *info);
+int					find_size(int id);
 char				**create_map(int size, char **map);
 void				free_content(char **content);
 t_tetro				*coord(t_tetro *tetro, char **tetros, int id);

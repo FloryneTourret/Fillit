@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/18 13:01:47 by ftourret     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 19:19:50 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 13:25:52 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		main(int argc, char **argv)
 		ft_error();
 	info->x = 0;
 	info->y = 0;
-	info->size = 2;
+	info->size = find_size(id);
 	info->id = -1;
 	info->found = 0;
 	info->nb_tetros = id;

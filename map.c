@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/12 14:08:04 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/19 19:17:47 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 13:13:40 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,6 +34,18 @@ char	**create_map(int size, char **map)
 	}
 	map[size] = NULL;
 	return (map);
+}
+
+int		find_size(int id)
+{
+	int i;
+	int nb;
+
+	nb = id * 4;
+	i = 2;
+	while (i * i < nb)
+		i++;
+	return (i);
 }
 
 void	free_content(char **content)
