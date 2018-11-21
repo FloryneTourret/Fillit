@@ -6,7 +6,7 @@
 /*   By: ftourret <ftourret@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/11/09 14:11:44 by naplouvi     #+#   ##    ##    #+#       */
-/*   Updated: 2018/11/20 15:32:28 by ftourret    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/11/20 15:43:52 by ftourret    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ int		resolve(char **map, char **tetros, t_info *info)
 	return (0);
 }
 
-int	check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
+int		check_free(char **map, char **tetros, t_tetro *tetro, t_info *info)
 {
 	if (info->x >= info->size)
 		increase_line(info);
@@ -109,7 +109,7 @@ int		is_free(char **map, t_tetro *tetro, int x, int y)
 	return (1);
 }
 
-int	remove_tetro(char **map, t_tetro *tetro, t_info *info)
+int		remove_tetro(char **map, t_tetro *tetro, t_info *info)
 {
 	int		x;
 	int		y;
